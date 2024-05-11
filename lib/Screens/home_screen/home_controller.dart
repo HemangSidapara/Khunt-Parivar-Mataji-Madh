@@ -8,6 +8,7 @@ import 'package:khunt_parivar_mataji_madh/Network/services/auth_services/auth_se
 import 'package:khunt_parivar_mataji_madh/Network/services/utils_services/get_package_info_service.dart';
 import 'package:khunt_parivar_mataji_madh/Screens/home_screen/dashboard_screen/dashboard_view.dart';
 import 'package:khunt_parivar_mataji_madh/Screens/home_screen/settings_screen/settings_view.dart';
+import 'package:khunt_parivar_mataji_madh/Utils/app_formatter.dart';
 
 class HomeController extends GetxController {
   RxInt bottomIndex = 0.obs;
@@ -50,7 +51,7 @@ class HomeController extends GetxController {
         final currentVersion = (await GetPackageInfoService.instance.getInfo()).version;
         debugPrint('currentVersion :: $currentVersion');
         debugPrint('newVersion :: ${newAPKVersion.value}');
-        isLatestVersionAvailable.value = isOldVersion(currentVersion, versionModel.data?.firstOrNull?.appVersion ?? currentVersion);
+        isLatestVersionAvailable.value = isUpdateAvailable(currentVersion, versionModel.data?.firstOrNull?.appVersion ?? currentVersion);
       }
     });
     if (index == 0) {
@@ -65,7 +66,15 @@ class HomeController extends GetxController {
     pageController.jumpToPage(bottomIndex.value);
   }
 
-  bool isOldVersion(String currentVersion, String newAPKVersion) {
-    return int.parse(currentVersion.split('.').last.length == 1 ? '${currentVersion.replaceAll('.', '')}0' : currentVersion.replaceAll('.', '')) < int.parse(newAPKVersion.split('.').last.length == 1 ? '${newAPKVersion.replaceAll('.', '')}0' : newAPKVersion.replaceAll('.', ''));
+  /// Current app is latest or not
+  bool isUpdateAvailable(String currentVersion, String newAPKVersion) {
+    List<String> versionNumberList = currentVersion.split('.').toList();
+    List<String> storeVersionNumberList = newAPKVersion.split('.').toList();
+    for (int i = 0; i < versionNumberList.length; i++) {
+      if (versionNumberList[i].toInt() < storeVersionNumberList[i].toInt()) {
+        return true;
+      }
+    }
+    return false;
   }
 }
