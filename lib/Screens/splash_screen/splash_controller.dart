@@ -42,11 +42,10 @@ class SplashController extends GetxController {
 
     newAPKUrl.addListener(GetStream(
       onListen: () async {
+        currentVersion.value = (await GetPackageInfoService.instance.getInfo()).version;
+        debugPrint('currentVersion :: ${currentVersion.value}');
+        debugPrint('newVersion :: ${newAPKVersion.value}');
         if (newAPKUrl.value.isNotEmpty && newAPKVersion.value.isNotEmpty) {
-          currentVersion.value = (await GetPackageInfoService.instance.getInfo()).version;
-          debugPrint('currentVersion :: ${currentVersion.value}');
-          debugPrint('newVersion :: ${newAPKVersion.value}');
-
           if (isUpdateAvailable(currentVersion.value, newAPKVersion.value)) {
             await showUpdateDialog(
               onUpdate: () async {
