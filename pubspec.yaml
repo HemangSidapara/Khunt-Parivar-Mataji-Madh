@@ -21,8 +21,8 @@ dependencies:
   image_picker: ^1.1.1
   permission_handler: ^11.3.1
   flutter_image_compress: ^2.2.0
-  syncfusion_flutter_pdfviewer: ^25.1.42
-  syncfusion_flutter_core: ^25.1.42
+  syncfusion_flutter_pdfviewer: ^25.2.5
+  syncfusion_flutter_core: ^25.2.5
   whatsapp_share: ^2.0.2
   font_awesome_flutter: ^10.7.0
   path_provider: ^2.1.3

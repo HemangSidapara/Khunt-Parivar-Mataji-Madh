@@ -42,7 +42,11 @@ class _MyAppState extends State<MyApp> {
             scaffoldBackgroundColor: AppColors.SECONDARY_COLOR,
             primaryColor: AppColors.PRIMARY_COLOR,
             textTheme: GoogleFonts.nunitoSansTextTheme(),
-            datePickerTheme: DatePickerThemeData(headerBackgroundColor: AppColors.SECONDARY_COLOR),
+            datePickerTheme: DatePickerThemeData(
+              headerBackgroundColor: AppColors.SECONDARY_COLOR,
+              backgroundColor: AppColors.PRIMARY_COLOR,
+              headerForegroundColor: AppColors.PRIMARY_COLOR,
+            ),
             useMaterial3: true,
             bottomSheetTheme: BottomSheetThemeData(
               backgroundColor: AppColors.SECONDARY_COLOR,

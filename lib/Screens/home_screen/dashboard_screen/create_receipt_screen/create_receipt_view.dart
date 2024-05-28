@@ -6,6 +6,7 @@ import 'package:khunt_parivar_mataji_madh/Constants/app_strings.dart';
 import 'package:khunt_parivar_mataji_madh/Constants/app_utils.dart';
 import 'package:khunt_parivar_mataji_madh/Screens/home_screen/dashboard_screen/create_receipt_screen/charity_receipt_view.dart';
 import 'package:khunt_parivar_mataji_madh/Screens/home_screen/dashboard_screen/create_receipt_screen/create_receipt_controller.dart';
+import 'package:khunt_parivar_mataji_madh/Screens/home_screen/dashboard_screen/create_receipt_screen/expense_receipt_view.dart';
 import 'package:khunt_parivar_mataji_madh/Widgets/custom_header_widget.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -26,7 +27,10 @@ class CreateReceiptView extends GetView<CreateReceiptController> {
               onPressed: () async {
                 FocusManager.instance.primaryFocus?.unfocus();
                 if (controller.tabController.index == 0) {
-                } else {}
+                  controller.generateCharityReceiptApiCall();
+                } else {
+                  controller.generateExpenseReceiptApiCall();
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.PRIMARY_COLOR,
@@ -125,7 +129,10 @@ class CreateReceiptView extends GetView<CreateReceiptController> {
                                 key: controller.charityFormKey,
                                 child: const CharityReceiptView(),
                               ),
-                              const CharityReceiptView(),
+                              Form(
+                                key: controller.expenseFormKey,
+                                child: const ExpenseReceiptView(),
+                              ),
                             ],
                           ),
                         ),

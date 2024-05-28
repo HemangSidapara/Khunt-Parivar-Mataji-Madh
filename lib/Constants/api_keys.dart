@@ -7,4 +7,8 @@ class ApiKeys {
   static const name = "name";
   static const phone = "phone";
   static const address = "address";
+  static const cash = "cash";
+  static const chequeNumber = "cheque_number";
+  static const note = "note";
+  static const date = "date";
 }

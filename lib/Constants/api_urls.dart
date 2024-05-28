@@ -5,4 +5,6 @@ class ApiUrls {
   static const String loginApi = '${_apiPath}Login';
   static const String inAppUpdateApi = '${_apiPath}inAppUpdate';
   static const String generateReceiptApi = '${_apiPath}generateReceipePdf';
+  static const String generateExpenseApi = '${_apiPath}generateExpensePdf';
+  static const String getBillingApi = '${_apiPath}getBilling';
 }
